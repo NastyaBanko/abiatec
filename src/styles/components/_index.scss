@@ -1,0 +1,242 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.home-section-1 {
+  background-image: url('/assets/car_slider.jpg');
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.home-section-how-it-works {
+  background-image: url('/assets/car.jpg');
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.home-section-benefits {
+  background-image: url('/assets/wall.jpg');
+  width: 100%;
+  min-height: 70vh;
+  overflow: hidden;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: white !important;
+}
+
+.overlay-light {
+  background: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.overlay-dark {
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+h2,
+h1 {
+  color: #2ea4db !important;
+  font-weight: bold !important;
+  font-size: 50px !important;
+}
+
+.heading-light {
+  color: white !important;
+}
+
+.align {
+  text-align: center;
+}
+
+.benefits-widgets {
+  color: #000000;
+  background-color: #ffffff;
+  font-size: 18px;
+  min-height: 200px;
+}
+
+.home-logo {
+  // background: url('/assets/logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 120px;
+}
+
+.home-section-footer {
+  background-color: #2ea4db;
+  color: #ffffff;
+  font-size: 19px;
+}
+
+.benefits-widgets-heading {
+  color: #2ea4db;
+  font-size: 35px;
+}
+
+.benefits-widgets-heading:hover {
+  color: #ffffff !important;
+}
+
+.slider-type-image {
+  width: 60% !important;
+  margin: 0 auto;
+}
+
+.slider-brand-image {
+  width: 30% !important;
+  margin: 0 auto;
+}
+
+/* .slider-slide {
+    height: 100% !important;
+} */
+
+.slider-list {
+  margin-bottom: 15px !important;
+}
+
+.slider-model-color-trim {
+  display: flex;
+  justify-content: center;
+  background: #cbe9f7;
+}
+
+.buying-selection-mode {
+  border: 1px solid #000000;
+  padding: 10px 5px;
+  font-size: 40px;
+  width: 170px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buying-selection-mode:hover {
+  background-color: #2ea4db;
+  color: #ffffff;
+  border: none;
+}
+
+.selected-selection-mode {
+  background-color: #2ea4db;
+  color: #ffffff;
+  border: none;
+}
+
+.buying-selection-mode-text {
+  font-size: 20px !important;
+  font-weight: bold;
+}
+
+.fa {
+  padding-top: 15px;
+}
+
+.second-mode {
+  margin-left: 10px;
+}
+
+.btn-call-to-action {
+  background-color: #2ea4db !important;
+  color: #ffffff !important;
+  cursor: pointer;
+  font-weight: bold !important;
+}
+
+.btn-call-to-action:hover {
+  background-color: #ffffff !important;
+  color: #2ea4db !important;
+  border: 2px solid #2ea4db;
+}
+
+.other-info-form {
+  background-color: #e5e5e5;
+  border-radius: 10px;
+}
+
+.overlay-component {
+  position: absolute !important;
+  width: 100%;
+  height: 100%;
+}
+
+.benefits-widgets:hover .benefits-widgets-heading {
+  color: #ffffff !important;
+}
+
+.benefits-widgets:hover {
+  color: #ffffff !important;
+  background-color: #2ea4db;
+}
+
+hr {
+  background: #8a8a8a;
+  height: 1px;
+}
+
+@media (min-width: 768px) {
+  .col-md-3 {
+    flex: 0 0 23% !important;
+    max-width: 23% !important;
+  }
+  .show-on-mobile-screen {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits-widgets {
+    margin: 5px;
+  }
+  .hide-on-mobile {
+    display: none !important;
+  }
+  .slider-type-image {
+    margin: 0;
+    float: right;
+  }
+  .second-mode {
+    margin-left: 0px;
+    margin-top: 10px;
+  }
+  .home-section-1 {
+    height: 40vh;
+    background-size: contain;
+  }
+  h2,
+  h1 {
+    font-size: 40px !important;
+  }
+  .navbar-nav {
+    margin-top: -17px;
+  }
+}

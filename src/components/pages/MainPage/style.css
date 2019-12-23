@@ -1,0 +1,40 @@
+.todoList {
+  width: 400px;
+  padding: 20px;
+}
+
+.needToDo {
+  text-align: right;
+}
+
+tr {
+  border: solid 1px black;
+}
+
+.searchForm {
+  margin-bottom: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.input {
+  padding: 5px;
+  border-radius: 5px;
+  border: solid 1px grey;
+}
+
+.button {
+  border: solid 1px grey;
+  padding: 5px;
+  background-color: white;
+  outline: none;
+  cursor: pointer;
+}
+
+td {
+  padding: 10px;
+}

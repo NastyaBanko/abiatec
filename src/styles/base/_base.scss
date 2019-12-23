@@ -1,0 +1,341 @@
+html, body{
+    margin: 0px;
+    padding: 0px;
+    background-color: #fff;;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+button{
+    cursor: pointer;
+}
+
+button:disabled{
+    cursor: default;
+}
+
+a{
+    text-decoration: none
+}
+
+.card{
+    box-shadow: 0 -3px 31px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.02)
+}
+
+.form-label{
+    font-size: $xs-size !important;
+    color: $off-white !important
+}
+
+// Buttons
+.btn-primary{
+    background-color: $purple !important;
+    border: 1px solid $primary !important
+}
+
+.btn-primary:focus{
+    outline: 0px;
+    box-shadow: none
+}
+
+// Text
+.text-primary{
+    color: $purple !important
+}
+
+//navbar 
+.no-mp{
+    padding: 0;
+    margin: 0;
+}
+.bg-nav{
+    background-color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+.navbar-expand-lg{
+    padding: 0.5rem 1rem !important;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding: $m-size $s-size;
+    font-size: $xs-size;
+    color: rgba(black, .5);
+}
+.navbar-expand-lg .navbar-nav .nav-link:hover , .navbar-expand-lg .navbar-nav .nav-link:focus{
+    color: rgba(black, 0.9) !important;
+}
+.navbar{
+    padding: 0;
+}
+
+#myTab{
+    width: 100%;
+    .nav-item{
+        width: 50%;
+    }
+}
+
+.navbar-brand{
+    font-size: 2rem;
+}
+
+//demo css
+.test-heading{
+    text-align: center;
+    margin: 70px 0 50px;
+}
+.test-para1, .test-para2{
+    max-width: 80%;
+    text-align: justify;
+    margin: 40px auto;
+}
+.nav-logo{
+    width: 44%;
+}
+
+//modal
+.modal-content{
+    z-index: 5;
+}
+.modal-backdrop{
+    z-index: 3;
+}
+.modal-underline{
+    border: 1px solid $primary;
+    margin: 40px 0;
+    position: relative;
+}
+.signin-option{
+    position: absolute;
+    bottom: -7px;
+    display: inline-block;
+    background-color: #fff;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 25px
+}
+.signin-option p{
+    margin: 0;
+    font-size: 18px;
+}
+.sign-btn{
+    background-color: #000;
+    padding-left: 0;
+
+}
+
+.sign-btn:hover{
+    background-color: rgba(99, 99, 253, 0.4);
+}
+
+.fa-color{
+    margin-right: 15px;
+    background-color: #3C5A99;
+}
+.go-color{
+    background-color: #DB4437;
+}
+.go-color,.fa-color{
+    color: $white;
+    padding: 0;
+}
+.fa-color i{
+    background-color: #294279;
+}
+.go-color i{
+    background-color: #c03b3b;
+}
+.fa-color i, .go-color i{
+    padding: 8px 10px;
+    margin-right: 10px;
+}
+.sign-text{
+    margin-right: 10px;
+    font-size: 18px;
+}
+.footer-text{
+    text-align: left;
+    width: 100%;
+    font-size: 18px;
+}
+.modal-footer a{
+    padding: .3rem 1.5rem;
+    font-size: 18px;
+}
+.nav-tabs{
+    border-bottom:1px solid green;
+    background-color: $primary;
+    border-radius: .25rem;
+}
+
+#myTab{
+    width: 100%;
+    .nav-item{
+        width: 50%;
+    }
+}
+
+.nav-tabs{
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.nav-tabs .nav-link{
+    border-radius: .25rem;
+    border: none !important;
+    color: $white;
+    padding: .5rem 5.74rem;
+}
+
+@media (max-width: 768px) {
+    .nav-tabs .nav-link {
+        padding: .5rem 3.74rem;
+    }
+    .signin-option {
+        width: 60%;
+    }
+}
+
+.nav-tabs .nav-link.active{
+    border: none !important;
+    background-color: rgba(99, 99, 253, 0.966);
+    color: $white;
+}
+.nav-tabs .nav-item {
+    margin-bottom: 0px;
+}
+.nav-link:hover{
+    border:none;
+}
+.close{
+    width: 20px;
+    float: right;
+    margin-right: 5px;
+}
+.nav-link {
+    display: block;
+    padding: 0.5rem 2.13rem;
+    font-size: 18px;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: $white;
+    outline: none;
+}
+.check-btn{
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+}
+.fsb{
+    width: 100%;
+}
+.forget-pass{
+    text-decoration: none;
+    color: #000;
+}
+.forget-pass:hover{
+    text-decoration: none;
+}
+.input-check input{
+    margin-right: 5px;
+}
+.fr{float: right;}
+.step-2{
+    font-size: 18px;
+}
+
+//progess bar
+.progessbar-container{
+    width: 100%;
+    overflow: hidden;
+    margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .progessbar-container{
+        margin-top: 70px;
+    }
+}
+
+.progessbar{
+    counter-reset: step;
+    padding: 0;
+    overflow: hidden;
+    width: 50%;
+    padding: 55px 0 0;
+    margin: 0 auto;
+}
+.progessbar li{
+    list-style-type: none;
+    float: left;
+    width: 50%;
+    position: relative;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    font-size: 18px;
+}
+.progessbar li::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ddd;
+    top: -34px;
+    left: -50%;
+   
+}
+.progessbar li::after{
+    position: absolute;
+    content: counter(step);
+    counter-increment: step;
+    width: 35px;
+    height: 35px;
+    border: 2px solid #ddd;
+    display: block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    line-height: 30px;
+    background-color: #fff;
+    left: 38%;
+    top: -50px;
+    z-index: 1;
+}
+.progessbar li:first-child::before{
+    content: none;
+}
+.progessbar li.active{
+    color: rgba(99, 99, 253, 0.966);;
+}
+.progessbar li.active::before{
+    background: rgba(99, 99, 253, 0.966);
+}
+li.active::after {
+    background: #8a8aff;
+    color: white;
+}
+.dealer-container{
+    width: 50%;
+    margin: auto;
+}
+.progessbar li.active-before::before{
+    background: #8a8aff;
+}
+
+button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+.de-modal-footer{
+    padding: 1rem 0;
+    border: none;
+}
+.de-submit{
+    margin: 30px 0 100px;
+}
+.ant-select-selection{
+    border-color: #8a8aff !important;
+    border-radius: 0 !important;
+}
+
+.go-color{}
