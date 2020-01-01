@@ -1,17 +1,40 @@
-import React from 'react';
-// import { Switch, Route } from "react-router-dom";
-// import { Redirect } from 'react-router'
-// import { ConnectedRouter } from "connected-react-router";
-import { Provider } from "react-redux";
+import React, {Component} from 'react';
+import { Switch, Route } from "react-router-dom";
+import {Redirect} from 'react-router'
+import { ConnectedRouter } from "connected-react-router";
 
-// import { connect } from "react-redux";
+import App from '../App';
+import AuthPage from '../../components/pages/AuthPage'
+import { connect } from "react-redux";
+import { history } from './../../history';
 
-import MainPage from "../../components/pages/MainPage";
-import store from "../../store/custom";
+class Root extends Component {
 
-const Root = () => {
-    return (
-        <Provider store={store}><MainPage /></Provider>
-    );
+    render() {
+        const { history } = this.props;
+        return (
+            <ConnectedRouter history={history}>
+                <Switch>
+                    <Route path="/main" component={App} />
+                    <Route path="/login" component={AuthPage} />
+                    <Route exact path="/" render={() => <Redirect to="/main"/> }/>
+                </Switch>
+            </ConnectedRouter>
+        );
+    }
+}
+
+const mapStateToProps = state => {
+    // if(!state.loginForm.decodedJWT) history.push('/login')
+    return {
+        //isAuthorized: !!state.loginForm.decodedJWT,
+    }
 };
-export default Root;
+
+// const mapDispatchToProps = dispatch => ({
+//     actions: bindActionCreators({
+//       ...authActions,
+//     }, dispatch),
+//   });
+
+export default connect(mapStateToProps)(Root);

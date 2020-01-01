@@ -5,14 +5,20 @@ import { connect } from "react-redux";
 
 const { Text } = Typography;
 
-const TodoStatus = ({ done, toDo }) => {
-  return <Text>{`${toDo} more to do, ${done} done`}</Text>;
+const TodoStatus = props => {
+  let { card } = props;
+  let doneValue = 0;
+  card.forEach(item => {
+    if (item.done) doneValue++;
+  });
+  return (
+    <Text>{`${card.length - doneValue} more to do, ${doneValue} done`}</Text>
+  );
 };
 
 const mapStateToProps = state => {
   return {
-    done: state.done,
-    toDo: state.toDo
+    card: state.custom.card
   };
 };
 
