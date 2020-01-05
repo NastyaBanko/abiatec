@@ -46,7 +46,13 @@ const TodoCard = props => {
       });
     } else if (buttonStatus !== "") {
       result = items.filter(item => {
-        return item.tag === buttonStatus;
+        let filteredItem;
+        item.tag().forEach(tag => {
+          if (tag.name === buttonStatus) {
+            filteredItem = item;
+          }
+        });
+        return filteredItem;
       });
     } else {
       return items;

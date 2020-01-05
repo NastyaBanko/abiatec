@@ -1,19 +1,38 @@
 let generateId = 0;
 let tagKey = 1000;
 
+const findTags = (text) => {
+    const tags = [];
+    let tagNames = text.split(" ").filter(item => item[0] === "#");
+    tagNames.forEach((tagName) => {
+        const tagItem = {
+            name: tagName,
+            tagKey: tagKey++,
+        };
+        tags.push(tagItem);
+    });
+    return tags;
+};
+
+const allTags = (name, description) => {
+    let tagFromName = findTags(name);
+    let tagFromDescription = findTags(description);
+    return tagFromName.concat(tagFromDescription);
+};
+
 const initialState = {
     isLoading: false,
     error: null,
     ghibliFilms: [],
     card: [
         {
-            name: "Do homework", important: false, done: false, id: generateId++, description: "JS", clickedDescrip: false, finishChange: false, tag: null, tagKey: tagKey++
+            name: "Do homework", important: false, done: false, id: generateId++, description: "#JS", clickedDescrip: false, finishChange: false, tag: function () { return allTags(this.name, this.description) },
         },
         {
-            name: "Play with cat", important: false, done: false, id: generateId++, description: "Tokati", clickedDescrip: false, finishChange: false, tag: null, tagKey: tagKey++
+            name: "Play with cat", important: false, done: false, id: generateId++, description: "Tokati", clickedDescrip: false, finishChange: false, tag: function () { return allTags(this.name, this.description) },
         },
         {
-            name: "Paint new picture", important: false, done: false, id: generateId++, description: "Homeless", clickedDescrip: false, finishChange: false, tag: null, tagKey: tagKey++
+            name: "Paint new picture", important: false, done: false, id: generateId++, description: "Homeless", clickedDescrip: false, finishChange: false, tag: function () { return allTags(this.name, this.description) },
         }
     ],
     statusCollection: { all: "All", active: "Active", done: "Done" },
@@ -38,18 +57,16 @@ export const clickDescrip = (state, { payload }) => {
 };
 
 export const searchChange = (state, { payload }) => {
-    let term = payload;
     return {
         ...state,
-        term: term,
+        term: payload,
     };
 };
 
 export const onChangeDescrip = (state, { payload }) => {
-    let changedDescrip = payload;
     return {
         ...state,
-        changedDescrip: changedDescrip,
+        changedDescrip: payload,
     };
 };
 
@@ -74,47 +91,27 @@ export const changeDescrip = (state, { payload }) => {
 };
 
 export const statusChange = (state, { payload }) => {
-    let status = payload;
     return {
         ...state,
-        buttonStatus: status,
+        buttonStatus: payload,
     };
 };
 
 export const showStatus = (state, { payload }) => {
-    let status = payload;
-    let result;
-    if (status === "All") {
-        result = [...state.card];
-    } else if (status === "Active") {
-        result = state.card.filter(item => {
-            return !item.done;
-        });
-    } else if (status === "Done") {
-        result = state.card.filter(item => {
-            return item.done;
-        });
-    }
-    console.log(result);
     return {
         ...state,
-        buttonStatus: status,
-        visibleItems: result,
+        buttonStatus: payload,
     };
 };
 
 export const addItem = (state, { payload }) => {
-    let text = payload;
-    let name = text.split(" ").find(item => item[0] === "#");
-    name = name ? name.slice(1) : name;
     const newItem = {
-        name: name ? name : text,
+        name: payload.name,
         important: false,
         done: false,
         id: generateId++,
-        description: text,
-        tag: name ? "#" + name : null,
-        tagKey: tagKey++
+        description: payload.description,
+        tag: function () { return allTags(payload.name, payload.description) },
     };
     let data = [...state.card];
     data.push(newItem);

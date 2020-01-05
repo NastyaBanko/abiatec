@@ -7,32 +7,46 @@ import { actions as customActions } from "../../../store/custom";
 
 class AddItem extends React.Component {
   state = {
-    name: ""
+    name: "",
+    description: ""
   };
   newItemName = e => {
     this.setState({ name: e.target.value });
   };
-  onSubmit = e => {
-    e.preventDefault();
-    this.props.addItem(this.state.name);
-    this.setState({ name: "" });
+  newItemDescription = e => {
+    this.setState({ description: e.target.value });
+  };
+
+  addAction = () => {
+    const newAction = {
+      name: this.state.name,
+      description: this.state.description
+    };
+    this.props.addItem(newAction);
+    this.setState({ name: "", description: "" });
   };
   render() {
     const { addItem } = this.props;
     return (
-      <Form onSubmit={this.onSubmit}>
+      <Form>
         <Input
           type="text"
-          placeholder="Add new action"
+          placeholder="Name of your action"
           onChange={this.newItemName}
           value={this.state.name}
-          style={{ width: "300px" }}
+          style={{ width: "400px", display: "block", marginTop: "10px" }}
+        />
+        <Input
+          type="text"
+          placeholder="Description of your action"
+          onChange={this.newItemDescription}
+          value={this.state.description}
+          style={{ width: "400px", display: "block" }}
         />
         <Button
           type="primary"
-          onClick={() => {
-            addItem(this.state.name);
-          }}
+          style={{ width: "400px" }}
+          onClick={this.addAction}
         >
           Add
         </Button>

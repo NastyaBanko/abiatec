@@ -50,17 +50,22 @@ const ToolBar = props => {
         style={{ width: 400, backgroundColor: "#96d7f5" }}
       >
         {card.map(el => {
-          if (el.tag) {
-            return (
-              <Button
-                onClick={() => {
-                  statusChange(el.tag);
-                }}
-                key={el.tagKey}
-              >
-                {el.tag}
-              </Button>
-            );
+          if (el.tag().length > 0) {
+            let buttons = [];
+            el.tag().forEach(tag => {
+              let button = (
+                <Button
+                  onClick={() => {
+                    statusChange(tag.name);
+                  }}
+                  key={tag.tagKey}
+                >
+                  {tag.name}
+                </Button>
+              );
+              buttons.push(button);
+            });
+            return buttons;
           }
         })}
       </Card>
