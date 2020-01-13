@@ -1,167 +1,59 @@
-let generateId = 0;
-let tagKey = 1000;
-
-const findTags = (text) => {
-    const tags = [];
-    let tagNames = text.split(" ").filter(item => item[0] === "#");
-    tagNames.forEach((tagName) => {
-        const tagItem = {
-            name: tagName,
-            tagKey: tagKey++,
-        };
-        tags.push(tagItem);
-    });
-    return tags;
-};
-
-const allTags = (name, description) => {
-    let tagFromName = findTags(name);
-    let tagFromDescription = findTags(description);
-    return tagFromName.concat(tagFromDescription);
-};
-
 const initialState = {
     isLoading: false,
     error: null,
-    ghibliFilms: [],
-    card: [
-        {
-            name: "Do homework", important: false, done: false, id: generateId++, description: "#JS", clickedDescrip: false, finishChange: false, tag: function () { return allTags(this.name, this.description) },
-        },
-        {
-            name: "Play with cat", important: false, done: false, id: generateId++, description: "Tokati", clickedDescrip: false, finishChange: false, tag: function () { return allTags(this.name, this.description) },
-        },
-        {
-            name: "Paint new picture", important: false, done: false, id: generateId++, description: "Homeless", clickedDescrip: false, finishChange: false, tag: function () { return allTags(this.name, this.description) },
-        }
-    ],
-    statusCollection: { all: "All", active: "Active", done: "Done" },
-    buttonStatus: "All",
-    term: "",
-    changedDescrip: "",
+    breakingBadCharacters: [],
+    currentStatus: "Status",
+    currentCategory: "Category",
+    minAge: 0,
+    maxAge: 0,
+    sortAlphabetical: false,
 };
 
-export const clickDescrip = (state, { payload }) => {
-    let id = payload;
-    let changedArray = [...state.card];
+//доделать второй спинер!!
 
-    let indexOfArray = changedArray.findIndex((el) => {
-        return el.id === id;
-    });
-    changedArray[indexOfArray].clickedDescrip = true;
-
+export const sortAlphabetical = (state, { payload }) => {
     return {
         ...state,
-        card: [...changedArray]
+        sortAlphabetical: !state.sortAlphabetical
     };
 };
 
-export const searchChange = (state, { payload }) => {
+export const onCurrentStatus = (state, { payload }) => {
     return {
         ...state,
-        term: payload,
+        currentStatus: payload
     };
 };
 
-export const onChangeDescrip = (state, { payload }) => {
+export const onCurrentCategory = (state, { payload }) => {
     return {
         ...state,
-        changedDescrip: payload,
+        currentCategory: payload
     };
 };
 
-export const changeDescrip = (state, { payload }) => {
-    let text = payload.changedText;
-    let id = payload.changedId;
-    let changedArray = [...state.card];
-
-    if (text !== '') {
-        let indexOfArray = changedArray.findIndex((el) => {
-            return el.id === id;
-        });
-        changedArray[indexOfArray].description = text;
-        changedArray[indexOfArray].finishChange = true;
-        changedArray[indexOfArray].clickedDescrip = false;
-    }
-
+export const onMinAge = (state, { payload }) => {
     return {
         ...state,
-        card: [...changedArray]
+        minAge: payload
     };
 };
 
-export const statusChange = (state, { payload }) => {
+export const onMaxAge = (state, { payload }) => {
     return {
         ...state,
-        buttonStatus: payload,
+        maxAge: payload
     };
 };
 
-export const showStatus = (state, { payload }) => {
+export const resetSettings = (state, { payload }) => {
     return {
         ...state,
-        buttonStatus: payload,
-    };
-};
-
-export const addItem = (state, { payload }) => {
-    const newItem = {
-        name: payload.name,
-        important: false,
-        done: false,
-        id: generateId++,
-        description: payload.description,
-        tag: function () { return allTags(payload.name, payload.description) },
-    };
-    let data = [...state.card];
-    data.push(newItem);
-    return {
-        ...state,
-        card: data
-    };
-};
-
-export const doneItem = (state, { payload }) => {
-    let id = payload;
-    let changedArray = [...state.card];
-
-    let indexOfArray = changedArray.findIndex((el) => {
-        return el.id === id;
-    });
-    changedArray[indexOfArray].done = !changedArray[indexOfArray].done;
-
-    return {
-        ...state,
-        card: [...changedArray]
-    };
-};
-
-export const deleteItem = (state, { payload }) => {
-    let id = payload;
-    let notDeleted = [];
-    state.card.forEach(item => {
-        if (item.id !== id) {
-            notDeleted.push(item);
-        }
-    });
-    return {
-        ...state,
-        card: notDeleted
-    };
-};
-
-export const changeColor = (state, { payload }) => {
-    let id = payload;
-    let changedArray = [...state.card];
-
-    let indexOfArray = changedArray.findIndex((el) => {
-        return el.id === id;
-    });
-    changedArray[indexOfArray].important = !changedArray[indexOfArray].important;
-
-    return {
-        ...state,
-        card: [...changedArray]
+        currentStatus: "Status",
+        currentCategory: "Category",
+        minAge: 0,
+        maxAge: 0,
+        sortAlphabetical: false,
     };
 };
 
@@ -172,15 +64,15 @@ export const processFailure = (state, { payload }) => ({
     isLoading: false,
 });
 
-export const getGhibliFilms = (state, { payload }) => ({
+export const getBreakingBad = (state, { payload }) => ({
     ...state,
     isLoading: true,
 });
 
-export const getGhibliFilmsSuccess = (state, { payload }) => ({
+export const getBreakingBadSuccess = (state, { payload }) => ({
     ...state,
     isLoading: false,
-    ghibliFilms: payload.ghibliFilms
+    breakingBadCharacters: payload.breakingBadCharacters
 });
 
 // export const signUp = (state, { payload }) => ({

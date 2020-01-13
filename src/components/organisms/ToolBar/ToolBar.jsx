@@ -1,93 +1,28 @@
 import React from "react";
-import { Button, Form, Input, Card } from "antd";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import { Button } from "antd";
 
-import { actions as customActions } from "../../../store/custom";
+import StatusSelect from "../../../containers/StatusSelect";
+import CategorySelect from "../../../containers/CategorySelect";
+import AgeSelect from "../../../containers/AgeSelect";
+import ResetSettings from "../../../containers/ResetSettings";
+import SortAlphabetically from "../../../containers/SortAlphabetically";
 
-const ToolBar = props => {
-  const { statusCollection, statusChange, searchChange, term, card } = props;
-  const { all, active, done } = statusCollection;
+const ToolBar = () => {
   return (
-    <Form>
-      <Input
-        value={term}
-        onChange={e => {
-          let term = e.target.value;
-          searchChange(term);
-        }}
-        placeholder="Type to search"
-        style={{ width: "150px", marginRight: "5px" }}
-      />
-      <Button
-        onClick={() => {
-          statusChange(all);
-        }}
-        type="primary"
-        style={{ marginRight: "5px" }}
-      >
-        All
-      </Button>
-      <Button
-        onClick={() => {
-          statusChange(active);
-        }}
-        type="primary"
-        style={{ marginRight: "5px" }}
-      >
-        Active
-      </Button>
-      <Button
-        type="primary"
-        onClick={() => {
-          statusChange(done);
-        }}
-      >
-        Done
-      </Button>
-      <Card
-        title="Available Tags"
-        style={{ width: 400, backgroundColor: "#96d7f5" }}
-      >
-        {card.map(el => {
-          if (el.tag().length > 0) {
-            let buttons = [];
-            el.tag().forEach(tag => {
-              let button = (
-                <Button
-                  onClick={() => {
-                    statusChange(tag.name);
-                  }}
-                  key={tag.tagKey}
-                >
-                  {tag.name}
-                </Button>
-              );
-              buttons.push(button);
-            });
-            return buttons;
-          }
-        })}
-      </Card>
-    </Form>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-around"
+      }}
+    >
+      <StatusSelect />
+      <CategorySelect />
+      <AgeSelect />
+      <ResetSettings />
+      <SortAlphabetically />
+    </div>
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    statusCollection: state.custom.statusCollection,
-    term: state.custom.term,
-    card: state.custom.card
-  };
-};
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      statusChange: customActions.statusChange,
-      searchChange: customActions.searchChange
-    },
-    dispatch
-  );
-
-export default connect(mapStateToProps, mapDispatchToProps)(ToolBar);
+export default ToolBar;

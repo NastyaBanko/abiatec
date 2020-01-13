@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions as customActions } from "../../store/custom";
 
-import MainPage from "../../components/pages/MainPage";
+import SortAlphabetically from "../../components/molecules/SortAlphabetically";
 
 const mapStateToProps = state => {
   return {
@@ -14,9 +14,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      getCharacters: customActions.getBreakingBad
+      getCharacters: customActions.getBreakingBad,
+      sortAlphabetical: customActions.sortAlphabetical
     },
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SortAlphabetically);

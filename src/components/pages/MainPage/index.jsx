@@ -1,15 +1,9 @@
 // @flow
 import * as React from "react";
-import { Card, Typography, List, Button } from "antd";
 import "./style.css";
 
-import TodoHeader from "../../organisms/TodoHeader";
-import TodoStatus from "../../organisms/TodoStatus";
 import ToolBar from "../../organisms/ToolBar";
-import TodoCard from "../../organisms/TodoCard";
-import AddItem from "../../organisms/AddItem";
-
-const { Title, Text } = Typography;
+import CharacterCards from "../../../containers/CharacterCards";
 
 class MainPage extends React.Component {
   state = {
@@ -21,19 +15,14 @@ class MainPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getFilms();
+    this.props.getCharacters();
   }
 
   render() {
-    const { error } = this.state;
-    const { card, changeColor } = this.props;
     return (
-      <div className="MainPage">
-        <TodoHeader />
-        <TodoStatus />
+      <div className="MainPage" style={{ textAlign: "center" }}>
         <ToolBar />
-        <TodoCard />
-        <AddItem />
+        <CharacterCards />
       </div>
     );
   }

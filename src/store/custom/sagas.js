@@ -33,14 +33,14 @@ import { history } from './../../history';
 //     }
 // }
 
-function* getGhibliFilmsSaga({ payload }) {
+function* getBreakingBadSaga({ payload }) {
     try {
         let response;
         const custom = makeApi().custom;
-        response = yield call([custom, custom.getGhibliFilms]);
+        response = yield call([custom, custom.getBreakingBad]);
 
         if (response.data) {
-            yield put(types.getGhibliFilmsSuccess({ ghibliFilms: response.data }));
+            yield put(types.getBreakingBadSuccess({ breakingBadCharacters: response.data }));
         }
 
     } catch (error) {
@@ -53,8 +53,8 @@ function* getGhibliFilmsSaga({ payload }) {
 
 
 const customSagas = [
-    takeEvery(types.getGhibliFilms, getGhibliFilmsSaga),
-   
+    takeEvery(types.getBreakingBad, getBreakingBadSaga),
+
 ];
 
 export default customSagas
